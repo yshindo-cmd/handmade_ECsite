@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>イベント情報 | オンラインショップ名</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-container">
+      <h1 class="logo"><a href="index.html">アクセサリーショップ名</a></h1>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="index.html#top_item">商品一覧</a></li>
+          <li><a href="event.html">イベント情報</a></li>
+          <li><a href="about.html">ショップについて</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="event-page">
+      <div class="container">
+        <h2 class="section-title">EVENT</h2>
+        <p class="section-subtitle">出店情報</p>
+
+        <!-- 題名だけスクロールできる小さい枠 -->
+        <nav class="event-scroll-nav">
+          <ul class="event-scroll-list"><!-- JSで挿入 --></ul>
+        </nav>
+
+        <!-- その下に詳細一覧 -->
+        <div class="event-list"><!-- JSで挿入 --></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    fetch('events.json')
+      .then(res => res.json())
+      .then(events => {
+        const scrollList = document.querySelector('.event-scroll-list');
+        const eventList = document.querySelector('.event-list');
+
+        events.forEach(event => {
+          // 上：タイトルだけのスクロールリスト
+          const navItem = document.createElement('li');
+          navItem.innerHTML = `<a href="#${event.id}">${event.date}｜${event.title}</a>`;
+          scrollList.appendChild(navItem);
+
+          // 下：詳細カード
+          const card = document.createElement('div');
+          card.className = 'event-card';
+          card.id = event.id;
+          card.innerHTML = `
+            <img src="${event.image}" alt="${event.title}" class="event-image">
+            <div class="event-info">
+              <p class="event-date">${event.date}</p>
+              <p class="event-place">${event.place}</p>
+              <h3 class="event-title">${event.title}</h3>
+              <p class="event-description">${event.description}</p>
+            </div>
+          `;
+          eventList.appendChild(card);
+        });
+      })
+      .catch(err => console.error('イベントデータの読み込みに失敗しました:', err));
+  </script>
+</body>
+
+</html>

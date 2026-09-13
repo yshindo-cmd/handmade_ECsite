@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品詳細 | オンラインショップ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-container">
+      <h1 class="logo">
+        <a href="index.html">アクセサリーショップ名</a>
+      </h1>
+
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="index.html#top_item">商品一覧</a></li>
+          <li><a href="event.html">イベント情報</a></li>
+          <li><a href="about.html">ショップについて</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="product-detail-section">
+      <div class="container">
+
+        <!-- 一覧に戻るリンク -->
+        <a href="index.html#top_item" class="back-link">← 商品一覧に戻る</a>
+
+        <div class="product-detail-wrapper">
+          <!-- 商品画像（JSで差し込む） -->
+          <div class="detail-image-box">
+            <img class="detail-image" src="" alt="">
+          </div>
+
+          <!-- 商品情報（JSで差し込む） -->
+          <div class="detail-info">
+            <h2 class="detail-title"></h2>
+            <p class="detail-price"></p>
+            <p class="detail-description"></p>
+                        <a href="#" target="_blank" rel="noopener" class="detail-buy-button buy-button">購入する</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // URLから ?id=01 の部分を取得
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id');
+
+    // products.jsonを読み込んで、該当する商品を表示する
+    fetch('products.json')
+      .then(res => res.json())
+      .then(products => {
+        const product = products.find(p => p.id === productId);
+
+        if (!product) {
+          // idが不正、または見つからなかった場合
+          document.querySelector('.product-detail-wrapper').innerHTML =
+            '<p>商品が見つかりませんでした。<a href="index.html">トップページに戻る</a></p>';
+          return;
+        }
+
+        document.title = `${product.name} | オンラインショップ`;
+        document.querySelector('.detail-image').src = product.image;
+        document.querySelector('.detail-image').alt = product.name;
+        document.querySelector('.detail-title').textContent = product.name;
+        document.querySelector('.detail-price').textContent = `¥${product.price.toLocaleString()} (税込)`;
+        document.querySelector('.detail-description').textContent = product.description;
+        document.querySelector('.detail-buy-button').href = product.stripeUrl;
+      })
+      .catch(err => {
+        console.error('商品データの読み込みに失敗しました:', err);
+      });
+  </script>
+</body>
+
+</html>

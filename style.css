@@ -1,0 +1,504 @@
+/* 全体のリセット（余計な余白を消す） */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, sans-serif;
+  color: #333;
+  background-color: #fafafa;
+}
+
+/* ヘッダー全体のスタイル */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+  position: sticky; /* スクロールしても上に固定される設定 */
+  top: 0;
+  z-index: 100;
+}
+
+/* ロゴとナビゲーションを横並びにするレイアウト */
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between; /* 左右に振り分ける */
+  align-items: center; /* 上下中央揃え */
+}
+
+.logo a {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+/* ナビゲーションメニューのスタイル */
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px; /* メニュー同士の間隔 */
+}
+
+.nav a {
+  text-decoration: none;
+  color: #666;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #d4a373; /* ホバーした時に少しおしゃれなアクセントカラーに変化 */
+}
+/* メインビジュアルエリア */
+/* ===================================
+   ブランドイメージバナー
+=================================== */
+.brand-banner {
+  position: relative;
+  width: 100%;
+  height: 320px; /* お好みで調整（280〜400px程度がバランス良い） */
+  overflow: hidden;
+}
+
+.brand-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像が切れても比率を保ったまま埋める */
+}
+
+.brand-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.25); /* 文字を読みやすくするための暗さ */
+}
+
+.brand-banner-catch {
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 文字を背景から浮き立たせる */
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .brand-banner {
+    height: 220px; /* スマホでは少し低めに */
+  }
+  .brand-banner-catch {
+    font-size: 1.1rem;
+  }
+}
+/* ===================================
+   2. メインビジュアル（左右チラ見せスライダー）
+=================================== */
+.hero-slider {
+  width: 100%;
+  padding: 20px 0;
+  overflow: hidden; /* 枠外の余計な画像をカット */
+}
+
+.slider-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* スライドのアニメーション速度 */
+  /* スマホのときは画像を大きく、PCのときは少しキュッと小さく見せる設定 */
+  width: 70%; /* 中央画像の横幅サイズ（ここで大きさを調整できます） */
+  margin: 0 auto;
+}
+
+.slide {
+  flex: 0 0 100%; /* 各スライドの幅 */
+  padding: 0 10px; /* 画像同士の間隔 */
+  box-sizing: border-box;
+  opacity: 0.4; /* 両端にあるときは少し薄く（半透明）する */
+  transition: opacity 0.5s;
+}
+
+/* 中央に来たアクティブな画像の設定 */
+.slide.active {
+  opacity: 1; /* 中央の画像だけくっきり見せる */
+}
+
+.slide img {
+  width: 100%;
+  height: 320px; /* 縦幅を抑えてコンパクトに（お好みで300px〜350pxで調整可） */
+  object-fit: cover;
+  border-radius: 12px; /* 角を丸くしておしゃれに */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* スマホ表示のときの設定 */
+@media (max-width: 768px) {
+  .slider-container {
+    width: 85%; /* スマホではチラ見せ幅を狭めてメインを大きく見せる */
+  }
+  .slide img {
+    height: 220px; /* スマホ用に縦幅を少し小さく */
+  }
+}
+
+/* ===================================
+   3. 特設エリア（バナーボタン）
+=================================== */
+.special-section {
+  padding: 30px 0;
+}
+
+.special-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* PCは4列 */
+  gap: 15px;
+}
+
+.special-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 10px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.special-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.special-card span {
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: #d4a373;
+  font-weight: bold;
+}
+
+.special-card h3 {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+/* ===================================
+   4. 商品一覧エリア（display: grid）
+=================================== */
+.products-section {
+  padding: 50px 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 30px;
+}
+
+/* ★スマホで2列になる魔法のCSS（Grid）★ */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* デフォルト（スマホ）で横2列 */
+  gap: 15px; /* カード同士の間隔 */
+}
+
+/* 商品カードのスタイル */
+.product-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 正方形にする */
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05); /* ホバー時に少し拡大 */
+}
+
+.product-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-title {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  font-weight: normal;
+}
+
+.product-price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.product-price .tax {
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: #888;
+}
+
+/* Stripe用 購入ボタン */
+.buy-button {
+  margin-top: auto; /* ボタンをカードの一番下に揃える */
+  display: block;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+}
+
+.buy-button:hover {
+  background-color: #d4a373; /* ホバー時のカラー */
+}
+
+/* ===================================
+   レスポンシブ対応（画面が広いPC向け）
+=================================== */
+@media (max-width: 768px) {
+  /* スマホのとき特設エリアは1列にする */
+  .special-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  /* パソコン（幅769px以上）では商品カタログを3列にする */
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+}
+
+/* ===================================
+   商品詳細ページ
+=================================== */
+.product-detail-section {
+  padding: 40px 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  color: #d4a373;
+}
+
+.product-detail-wrapper {
+  display: flex;
+  flex-direction: column; /* スマホ：縦積み */
+  gap: 25px;
+}
+
+.detail-image-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.detail-price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.detail-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* PC表示：画像と情報を横並びにする */
+@media (min-width: 769px) {
+  .product-detail-wrapper {
+    flex-direction: row;
+  }
+
+  .detail-image-box,
+  .detail-info {
+    width: 50%;
+  }
+}
+
+/* ===================================
+   イベントページ
+=================================== */
+.event-page {
+  padding: 50px 0;
+}
+
+/* 題名だけスクロールできる小さい枠 */
+.event-scroll-nav {
+  max-height: 160px; /* ここが「小さめの枠」の高さ。増減で調整可 */
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  background-color: #fff;
+}
+
+.event-scroll-list {
+  list-style: none;
+}
+
+.event-scroll-list li {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.event-scroll-list li:last-child {
+  border-bottom: none;
+}
+
+.event-scroll-list a {
+  display: block;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.event-scroll-list a:hover {
+  background-color: #faf6f2;
+  color: #d4a373;
+}
+
+/* 下に来る詳細カード */
+.event-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 25px 0;
+  border-bottom: 1px solid #eee;
+  scroll-margin-top: 90px; /* クリックで飛んだ時、ヘッダーに隠れないようにする余白 */
+}
+
+.event-card:last-child {
+  border-bottom: none;
+}
+
+.event-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.event-date {
+  font-size: 0.8rem;
+  color: #d4a373;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.event-place {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.event-title {
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.event-description {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* PC表示：画像とテキストを横並びに */
+@media (min-width: 769px) {
+  .event-card {
+    flex-direction: row;
+  }
+  .event-image {
+    width: 40%;
+    aspect-ratio: 1 / 1;
+  }
+  .event-info {
+    width: 60%;
+  }
+}
+.event-campaign {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #fff;
+  background-color: #d4a373;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.event-place {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.event-address {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 12px;
+}

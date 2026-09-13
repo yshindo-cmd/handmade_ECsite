@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>オンラインショップ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-container">
+      <!-- ショップロゴ（クリックでトップへ戻る） -->
+      <h1 class="logo">
+        <a href="#">アクセサリーショップ名</a>
+      </h1>
+
+      <!-- ナビゲーションメニュー -->
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="index.html#top_item">商品一覧</a></li>
+          <li><a href="event.html">イベント情報</a></li>
+          <li><a href="about.html">ショップについて</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="brand-banner">
+      <img src="images/top.jpg" alt="ブランドイメージ" class="brand-banner-image">
+      <div class="brand-banner-overlay">
+        <p class="brand-banner-catch">丁寧に、ひとつひとつ手作りで。</p>
+      </div>
+    </section>
+
+    <!-- ② 全製品のすぐ上にスライダーを移動！ -->
+    <section class="hero-slider">
+      <div class="slider-container">
+        <div class="slide active"><img src="images/slide1.png" alt="スライド1"></div>
+        <div class="slide"><img src="images/slide2.png" alt="スライド2"></div>
+        <div class="slide"><img src="images/slide3.png" alt="スライド3"></div>
+        <div class="slide"><img src="images/slide4.png" alt="スライド4"></div>
+      </div>
+    </section>
+
+    <!-- ③ 全製品（商品一覧） -->
+    <!-- 人気商品エリア（厳選3アイテム） -->
+    <section class="products-section" id="top_item">
+      <div class="container">
+        <h2 class="section-title">POPULAR ITEMS</h2>
+        <p class="section-subtitle">人気商品</p>
+
+        <!-- PCで3列表示の時に1行に美しく揃うグリッド -->
+        <div class="product-grid">
+
+          <!-- 人気商品 1 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="images/slide1.png" alt="一粒パールのシンプルピアス">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">一粒パールのシンプルピアス</h3>
+              <p class="product-price">¥3,200 <span class="tax">(税込)</span></p>
+              <a href="product.html?id=01" class="detail-button">詳細を見る</a>
+            </div>
+          </div>
+
+          <!-- 人気商品 2 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="images/slide2.png" alt="華奢チェーンブレスレット">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">華奢チェーンブレスレット</h3>
+              <p class="product-price">¥2,800 <span class="tax">(税込)</span></p>
+              <a href="product.html?id=01" class="detail-button">詳細を見る</a>
+            </div>
+          </div>
+
+          <!-- 人気商品 3 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="images/slide3.png" alt="フラワーモチーフネックレス">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">フラワーモチーフネックレス</h3>
+              <p class="product-price">¥4,500 <span class="tax">(税込)</span></p>
+              <a href="product.html?id=01" class="detail-button">詳細を見る</a>
+            </div>
+          </div>
+          <!-- 緊急使いまわし商品4つめ -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="images/slide3.png" alt="フラワーモチーフネックレス">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">フラワーモチーフネックレス</h3>
+              <p class="product-price">¥4,500 <span class="tax">(税込)</span></p>
+              <a href="product.html?id=01" class="detail-button">詳細を見る</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="view-all-wrapper">
+          <a href="top_item.html" class="view-all-button">すべての商品を見る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <script>
+    const sliderContainer = document.querySelector('.slider-container');
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
+
+    function updateSlider() {
+      // スライドを横にずらす計算
+      const amountToMove = -currentIndex * 100;
+      sliderContainer.style.transform = `translateX(${amountToMove}%)`;
+
+      // アクティブなスライド（中央）のクラスを付け替え
+      slides.forEach((slide, index) => {
+        if (index === currentIndex) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlider();
+    }
+
+    // 最初のリセット＆6秒ごとに自動スライド
+    updateSlider();
+    setInterval(nextSlide, 6000);
+
+    events.forEach(event => {
+  // 上：タイトルだけのスクロールリスト
+  const navItem = document.createElement('li');
+  navItem.innerHTML = `<a href="#${event.id}">${event.date}｜${event.title}</a>`;
+  scrollList.appendChild(navItem);
+
+  // 下：詳細カード
+  const card = document.createElement('div');
+  card.className = 'event-card';
+  card.id = event.id;
+  card.innerHTML = `
+    <img src="${event.image}" alt="${event.title}" class="event-image">
+    <div class="event-info">
+      <p class="event-date">${event.date}</p>
+      <p class="event-campaign">${event.campaignName}</p>
+      <h3 class="event-title">${event.title}</h3>
+      <p class="event-place">📍 ${event.place}</p>
+      <p class="event-address">${event.address}</p>
+      <p class="event-description">${event.description}</p>
+    </div>
+  `;
+  eventList.appendChild(card);
+});
+  </script>
+</body>
+
+</html>

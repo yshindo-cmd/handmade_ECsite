@@ -1,0 +1,34 @@
+[
+  {
+    "id": "01",
+    "name": "一粒パールのシンプルピアス",
+    "price": 3200,
+    "image": "images/slide1.png",
+    "description": "上品な光沢の淡水パールを使った、どんな服装にも合わせやすいシンプルなピアスです。",
+    "stripeUrl": "https://buy.stripe.com/xxxxxxxxxxxx"
+  },
+  {
+    "id": "02",
+    "name": "華奢チェーンブレスレット",
+    "price": 2800,
+    "image": "images/slide2.png",
+    "description": "細身のチェーンが手首を華奢に見せてくれる、重ね付けにもおすすめのブレスレットです。",
+    "stripeUrl": "https://buy.stripe.com/xxxxxxxxxxxx"
+  },
+  {
+    "id": "03",
+    "name": "フラワーモチーフネックレス",
+    "price": 4500,
+    "image": "images/slide3.png",
+    "description": "花をモチーフにした華やかなデザインのネックレスです。パーティーシーンにもおすすめです。",
+    "stripeUrl": "https://buy.stripe.com/xxxxxxxxxxxx"
+  },
+  {
+    "id": "04",
+    "name": "フラワーモチーフネックレス",
+    "price": 4500,
+    "image": "images/slide3.png",
+    "description": "花をモチーフにした華やかなデザインのネックレスです。パーティーシーンにもおすすめです。",
+    "stripeUrl": "https://buy.stripe.com/xxxxxxxxxxxx"
+  }
+]

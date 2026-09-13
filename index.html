@@ -144,9 +144,14 @@
 
     events.forEach(event => {
   // 上：タイトルだけのスクロールリスト
-  const navItem = document.createElement('li');
-  navItem.innerHTML = `<a href="#${event.id}">${event.date}｜${event.title}</a>`;
-  scrollList.appendChild(navItem);
+const navItem = document.createElement('li');
+navItem.innerHTML = `
+  <a href="#${event.id}">
+    <span class="event-nav-text">${event.date}｜${event.title}</span>
+    <span class="event-nav-place">${event.place}</span>
+  </a>
+`;
+scrollList.appendChild(navItem);
 
   // 下：詳細カード
   const card = document.createElement('div');

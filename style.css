@@ -410,7 +410,10 @@ body {
 }
 
 .event-scroll-list a {
-  display: block;
+  display: flex;
+  justify-content: space-between; /* 左右に振り分ける */
+  align-items: center;
+  gap: 10px;
   padding: 12px 16px;
   font-size: 0.9rem;
   color: #333;

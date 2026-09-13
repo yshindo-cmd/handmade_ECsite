@@ -5,9 +5,9 @@
     "campaignName": "ラブリーにゃんフェスタ",
     "place": "大阪南港ATCホール",
     "address": "福岡県福岡市中央区",
-    "title": "秋のハンドメイドマルシェに出店します",
+    "title": "ラブリーにゃんフェスタに出店します",
     "description": "秋らしい新作アクセサリーを中心に出店予定です。会場限定のミニプレゼントもご用意しています。",
-    "image": "images/event1.jpeg"
+    "image": "images/events1.jpeg"
   },
   {
     "id": "e01",
@@ -17,7 +17,7 @@
     "address": "福岡県福岡市中央区",
     "title": "秋のハンドメイドマルシェに出店します",
     "description": "秋らしい新作アクセサリーを中心に出店予定です。会場限定のミニプレゼントもご用意しています。",
-    "image": "images/event1.jpeg"
+    "image": "images/events1.jpeg"
   },
   {
     "id": "e02",
@@ -26,7 +26,7 @@
     "place": "△△クラフトフェア会場",
     "address": "福岡県北九州市小倉北区",
     "title": "クラフトフェアに出店予定です",
-    "description": "入場料がかかりますのでｍ事前のご予約をお勧めしております。",
-    "image": "images/event2.jpg"
+    "description": "入場料がかかりますので、事前のご予約をお勧めしております。",
+    "image": "images/events2.jpg"
   }
 ]

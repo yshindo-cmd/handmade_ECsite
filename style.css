@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 /* 全体のリセット（余計な余白を消す） */
 * {
   margin: 0;
@@ -634,3 +637,40 @@ body {
 .back-btn:hover {
   background-color: #6d5243;
 }
+
+/* トップへ戻るボタンのスタイル */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #333333; /* ボタンの背景色（暗めのグレー） */
+  color: #ffffff;            /* 文字色 */
+  border: 1px solid #d4af37; /* さりげないゴールドの枠線 */
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  
+  /* 中央寄せとリンクの下線を消す設定 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  
+  opacity: 0; 
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+/* スクロール時に表示されるクラス */
+#scrollTopBtn.is-active {
+  opacity: 1;
+  visibility: visible;
+  display: flex;
+}
+
